@@ -1,0 +1,15 @@
+---
+title: "RWorksheet_Lomibao#1"
+author: "lomibao"
+date: "2024-09-17"
+output: pdf_document
+---
+
+```{r setup, include=FALSE}
+knitr::opts_chunk$set(echo = TRUE)
+```
+```{r}
+
+
+```
+
