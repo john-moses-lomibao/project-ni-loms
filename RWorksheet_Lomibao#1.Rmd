@@ -9,7 +9,147 @@ output: pdf_document
 knitr::opts_chunk$set(echo = TRUE)
 ```
 ```{r}
+     
 
+```
+1.A how many data points ?
+1.B
+```{r}
+    age <- c(34, 28, 22, 36, 27, 18, 52, 39, 42, 29, 35, 31, 27, 22, 37, 34, 19, 20, 57, 49, 50, 37, 46, 25, 17, 37, 42, 53, 41, 51, 35, 25, 33, 41)
+length(age)
 
+```
+2. Find the reciprocal
+```{r}
+library("MASS")
+ recipage <- 1/age
+ fractions(recipage)
+
+```
+  3. what happens to the new_age?
+  It doubles the data of age
+```{r}
+new_age <- c(age, 0, age)
+new_age
+```
+  4 Sort age
+```{r}
+   sort(age)
+
+```
+ 5. find max and min 
+  max- 57
+  min- 17
+```{r}
+max(age)
+min(age)
+
+```
+  6.
+```{r}
+ data <- c(2.4, 2.8, 2.1, 2.5, 2.4, 2.2, 2.5, 2.3, 2.5, 2.3, 2.4, 2.7)
+ length(data)
+```
+  7.
+  data value still the same but the the new_data doubles its value from the original data.
+```{r}
+New_data <- c(data * 2)
+new_data
+```
+  
+  
+ 8.1
+```{r}
+ integer_seq <-seq(1:100)
+integer_seq
+```
+ 
+ 8.2
+```{r}
+twenty_seq <- seq(20,60)
+twenty_seq
+
+```
+  8.3
+```{r}
+twenty_mean <- mean(20:60)
+twenty_mean
+```
+  8.4
+```{r}
+sumofnum <- sum(51:91)
+sumofnum
+```
+  8.5
+```{r}
+integ <- seq(1:1000)
+integ
+```
+  A.1143
+  B.
+```{r}
+8.1
+ integer_seq <-seq(1:100)
+ integer_seq
+8.2
+
+ twenty_seq <- seq(20,60)
+ twenty_seq
+
+8.3
+ twenty_mean <- mean(20:60)
+ twenty_mean
+
+8.4
+ sumofnum <- sum(51:91)
+ sumofnum
+```
+  C.10
+```{r}
+max(integ:10)
+```
+  9.
+```{r}
+ Filter(function(i) {all(i %% c(3,5,7) != 0) }, seq(100))
+```
+  10.
+```{r}
+inverseq <- seq(100,1)
+inverseq 
+```
+11.
+```{r}
+list <- seq(1,24)
+listmulti_3 <- list[list %% 3 == 0]
+listmulti_5 <- list[list %% 5 == 0]
+multipleoflist <- c(listmulti_3, listmulti_5)
+multipleoflist
+sum_of_multiples <- sum(multipleoflist)
+sum_of_multiples
+```
+12.
+```{r}
+ x <- {0 + x + 5 + }
+```
+  The code dosen't run due to error
+  
+13.
+```{r}
+score <- c(72, 86, 92, 63, 88, 89, 91, 92, 75,
+75 , 77)
+score[2]
+score[3]
+```
+14.
+```{r}
+ a = c(1,2,NA,4,NA,6,7)
+print(a,na.print="-999")
+```
+15.
+```{r}
+name = readline(prompt="Input your name: ")
+age = readline(prompt="Input your age: ")
+print(paste("My name is",name, "and I am",age ,"years old."))
+print(R.version.string)
 ```
 
