@@ -53,7 +53,7 @@ min(age)
   7.
   data value still the same but the the new_data doubles its value from the original data.
 ```{r}
-New_data <- c(data * 2)
+new_data <- c(data * 2)
 new_data
 ```
   
@@ -129,7 +129,7 @@ sum_of_multiples
 ```
 12.
 ```{r}
- x <- {0 + x + 5 + }
+#x <- {0 + x + 5 + }
 ```
   The code dosen't run due to error
   
