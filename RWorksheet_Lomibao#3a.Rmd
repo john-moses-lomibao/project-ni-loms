@@ -1,0 +1,141 @@
+---
+title: "RWorksheet_Lomibao#3"
+author: "lomibao"
+date: "2024-09-30"
+output:
+  pdf_document: default
+  html_document: default
+---
+
+```{r setup, include=FALSE}
+knitr::opts_chunk$set(echo = TRUE)
+```
+
+```{r}
+```
+1.LETTERS
+```{r}
+LETTERS
+```
+letters
+```{r}
+letters
+```
+A.
+```{r}
+let_v <- LETTERS[1:11]
+let_v
+```
+B.
+```{r}
+odlet <- LETTERS[seq(1, length(LETTERS), 2)]
+odlet
+```
+C.
+```{r}
+vowels <- c("a","e","i","o","u")
+vowels
+```
+D.
+```{r}
+vector <- c("v","w","x","y","z")
+vector
+```
+E.
+```{r}
+new_vector <- letters[15:24]
+new_vector
+```
+2.A.
+```{r}
+city <- c("Tuguegarao City","Manila","Iloilo City","Samal Island","Davao City")
+city
+```
+B.
+```{r}
+temp <- c(42,39,34,34,27)
+temp
+```
+C.
+```{r}
+cit_tempdf <- data.frame(city,temp)
+cit_tempdf
+```
+D.
+```{r}
+names(cit_tempdf) <- c("City", "Temperature")
+cit_tempdf
+```
+E.It shows the how many object and variables in the data frame.
+```{r}
+str(cit_tempdf)
+```
+F.
+```{r}
+nv <- cit_tempdf[3:4, ]
+nv
+```
+G.
+```{r}
+high_temp <-  max(cit_tempdf$temp)
+print(high_temp)
+low_temp <-  min(cit_tempdf$temp)
+print(low_temp)
+```
+2.A.
+```{r}
+matx <- matrix(data = c(1,2,3,4,5,6,7,8,11,12,13,14),3,4)
+matx
+```
+B.The numbers at the matrix multiplies by 2.
+```{r}
+new_matx <- matx * 2
+new_matx
+```
+C.
+```{r}
+row2 <- new_matx[2,]
+row2
+```
+D.
+```{r}
+new_matx[1:2 ,3:4]
+```
+E.
+```{r}
+new_matx[3, 2:3]
+```
+F.
+```{r}
+new_matx[,4]
+```
+G.
+```{r}
+rownames(new_matx) <- c("isa", "dalawa", "tatlo")
+colnames(new_matx) <- c("uno", "dos", "tres", "quatro")
+new_matx
+```
+H.
+```{r}
+dim(matx) <- c(6,2)
+matx
+```
+3.
+```{r}
+vec <- c(11, 21, 32, 16, 7, 48, 39, 10, 32, 4, 52, 11)
+vecrep<- rep(vec, each = 2)
+ars <- array(vecrep, dim = c(2, 4, length(vecrep)/(2*4)))
+ars
+```
+B.Its has 3 dimension
+```{r}
+dim(ars)
+```
+C.
+```{r}
+rownames(ars) <- letters[1:2]
+colnames(ars) <- LETTERS[1:4]
+dimnames(ars) <- list(letters[1:2], LETTERS[1:4], c("1st-Dimensional Array", "2nd-Dimensional Array", "3rd-Dimensional Array"))
+ars
+```
+
