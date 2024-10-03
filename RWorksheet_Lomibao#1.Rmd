@@ -129,7 +129,7 @@ sum_of_multiples
 ```
 12.
 ```{r}
-#x <- {0 + x + 5 + }
+# x <- {0 + x + 5 + }
 ```
   The code dosen't run due to error
   
