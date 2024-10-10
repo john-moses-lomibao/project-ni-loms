@@ -2,7 +2,9 @@
 title: "RWorksheet_Lomibao#3b"
 author: "lomibao"
 date: "2024-10-03"
-output: html_document
+output:
+  pdf_document: default
+  html_document: default
 ---
 
 ```{r setup, include=FALSE}
@@ -64,8 +66,36 @@ stringsAsFactors=FALSE)
 print("Structure of the empty dataframe:")
 print(str(df))
 ```
-3.
+3.A.
 ```{r}
-#HouseholdData <- read.csv("/cloud/project/HouseholdData.csv")
-```
+HouseholdData <- read.csv("/cloud/project/HouseholdData - Sheet1.csv")
+HouseholdData
 
+```
+B.
+```{r}
+HouseholdData$Sex <- factor(HouseholdData$Sex, levels = c("Male","Female"), labels = c(1,2))
+HouseholdData
+```
+C.
+```{r}
+HouseholdData$Types_of_houses <- factor(HouseholdData$Types_of_houses, levels = c("Wood", "Congrete", "Semi-congrete"), labels = c(1, 2, 3))
+HouseholdData
+```
+D.
+```{r}
+HouseholdData$Fathers_Occupation <- factor(HouseholdData$Fathers_Occupation, levels = c(1, 2, 3), labels = c("Farmer", "Driver", "Others"))
+HouseholdData
+```
+E.
+```{r}
+female_res <- subset(HouseholdData, Sex==2 & Fathers_Occupation =="Driver")
+female_res
+```
+F.
+```{r}
+ms <- subset(HouseholdData, Respondents & Siblings_at_schools >=  5)
+ms
+```
+4.
+The graph show the sentiment of tweets from July 14, 2020 to July 21 ,2020. It shows that negative and neutral Tweets reach their peaks in July 15,2020 While the positive tweets reach their peaks in July 21, 2020. 
