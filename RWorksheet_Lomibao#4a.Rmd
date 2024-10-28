@@ -51,3 +51,89 @@ print(new_order_data)
 Import_March <- read.table("/cloud/project/import_march - Sheet1.csv")
 Import_March
 ```
+6.
+```{r}
+num <- as.integer(readline(prompt = "Enter a number between 1 to 50: "))
+if(!is.na(num) && num == 20) {
+  print("The number is beyond the range of 1 to 50 ")
+}else{
+  print("TRUE")
+}
+
+if(!is.na(num) && num>=1 && num<=50){
+  num
+}else{
+  print("The number selected is beyond the range of 1 to 50.")
+}
+```
+7.
+```{r}
+price <- as.numeric(readline(prompt="Enter Price: "))
+min_bills <- function(price) {
+bills_used <- 0
+
+if (!is.na(price) && price >= 1000) {
+bills_used <- bills_used + price %/% 1000
+price <- price %% 1000
+}
+4
+if (!is.na(price) && price >= 500) {
+bills_used <- bills_used + price %/% 500
+price <- price %% 500
+}
+if (!is.na(price) && price >= 200) {
+bills_used <- bills_used + price %/% 200
+price <- price %% 200
+}
+if (!is.na(price) && price >= 100) {
+bills_used <- bills_used + price %/% 100
+price <- price %% 100
+}
+if (!is.na(price) && price >= 50) {
+bills_used <- bills_used + price %/% 50
+price <- price %% 50
+}
+return(bills_used)
+}
+min_bills(price)
+
+```
+8.A.
+```{r}
+grade <- data.frame(Name = c("Annie", "Thea", "Steve","Hanna"),  Grade1 = c(85,65,75,95),Grade2 = c(65,75,55,75),Grade3 = c(85, 90, 80, 100),Grade4 = c(100, 90, 85, 90))
+```
+B.
+```{r}
+avg_scores <- rowSums(grade[,-1]) / (ncol(grade) - 1)
+if (any(avg_scores > 90)) {
+high_avg_names <- grade$Name[avg_scores > 90]
+high_avg_scores <- avg_scores[avg_scores > 90]
+cat(paste(high_avg_names, " average grade this semester is ", high_avg_scores, ".\n", sep = ""))
+}else{
+cat("No student's average grade is over 90.\n")
+}
+```
+C.
+```{r}
+test_avg <- colSums(grade[,-1]) / nrow(grade)
+if (any(test_avg < 80)) {
+hard_tests <- which(test_avg < 80)
+cat(paste("The", hard_tests, "th test was difficult.\n"))
+} else {
+cat("All tests had average scores of 80 or above.\n")
+}
+
+```
+D.
+```{r}
+highest_scores <- apply(grade[,-1], 1, function(x) sort(x, decreasing = TRUE)[1])
+if (any(highest_scores > 90)) {
+high_score_names <- grade$Name[highest_scores > 90]
+high_scores <- highest_scores[highest_scores > 90]
+cat(paste(high_score_names, "'s highest grade this semester is ", high_scores, ".\n"))
+} else {
+cat("No student's highest grade exceeded 90.\n")
+}
+
+```
+
