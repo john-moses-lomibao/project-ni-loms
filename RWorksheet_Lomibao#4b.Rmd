@@ -55,8 +55,6 @@ break
 }
 }
 ```
-
-
 4.A
 ```{r}
 data <- read.csv("/cloud/project/shoesz.csv")
@@ -163,4 +161,4 @@ legend("topright", legend = levels(iris$Species),
        title = "Species")
 
 ```
-
+F. The scatterplot shows clear separation between setosa and the other two species based on Sepal Length and Sepal Width.
