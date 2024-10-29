@@ -1,0 +1,166 @@
+---
+title: "RWorksheet_Lomibao#4b"
+author: "lomibao"
+date: "2024-10-29"
+output: pdf_document
+---
+
+```{r setup, include=FALSE}
+knitr::opts_chunk$set(echo = TRUE)
+```
+1.
+```{r}
+vectorA <- c(1, 2, 3, 4, 5)
+
+mtr <- matrix(0, nrow = 5, ncol = 5)
+
+for (i in 1:5) {
+  for (j in 1:5) {
+    mtr[i, j] <- abs(i - vectorA[j])
+  }
+}
+print(mtr)
+```
+2.
+```{r}
+vec <- c(1, 2, 3, 4, 5)
+
+for(i in vec){
+  cat(rep("*", i),"\n")
+}
+```
+3.
+```{r}
+start_num <- as.integer(readline(prompt="Enter the starting number for the Fibonacci sequence: "))
+
+```
+
+```{r}
+a <- 0
+b <- 1
+if (!is.na(start_num) < 0) {
+1
+cat("Please enter a non-negative starting number.\n")
+} else {
+repeat {
+if (!is.na(start_num) && a >= start_num) {
+cat(a, "\n")
+}
+temp <- a + b
+a <- b
+b <- temp
+if (!is.na(start_num) && a > 500) {
+break
+}
+}
+}
+```
+
+
+4.A
+```{r}
+data <- read.csv("/cloud/project/shoesz.csv")
+
+head(data)
+```
+B. Both male and female got 14.
+```{r}
+male_data <- subset(data, Gender == "M")
+female_data <- subset(data, Gender == "F")
+
+num_males <- nrow(male_data)
+num_females <- nrow(female_data)
+
+cat("Number of observations for Male: ", num_males, "\n")
+cat("Number of observations for Female: ", num_females, "\n")
+```
+C.
+```{r}
+library(ggplot2)
+
+HouseHoldData <-read.csv("/cloud/project/HouseholdData - Sheet1.csv")
+
+
+ggplot(HouseHoldData, aes(x=Sex, fill=Sex)) +
+  geom_bar() +
+  ggtitle("Number of Males and Females in Household Data") +
+  xlab("Gender") +
+  ylab("Count") +
+  scale_fill_manual(values = c("blue", "pink")) +
+  theme_minimal()
+
+```
+5.
+```{r}
+exp <- c(Food = 60, Electricity = 10, Savings = 5, Miscellaneous = 25)
+
+percent <- round(100 * exp/ sum(exp), 1)
+
+labels <- paste(names(exp), percent, "%")
+
+colors <- c("blue", "green", "yellow", "red")
+
+pie(exp, labels = labels, col = colors, main = "Dela Cruz Family Monthly Expenses")
+```
+6.
+```{r}
+data(iris)
+iris
+```
+A.It show the no.objeccts, variable, length and etc.
+```{r}
+str(iris)
+```
+B.
+```{r}
+mean_length <- colMeans(iris[, c("Sepal.Length", "Sepal.Width", "Petal.Length", "Petal.Width")])
+
+mean_length
+
+```
+C.
+```{r}
+species_distribution <- table(iris$Species)
+
+colors <- c("blue", "red", "green")
+
+pie(species_distribution, 
+    main = "Distribution of Iris Species", 
+    col = colors, 
+    labels = paste(names(species_distribution), "(", species_distribution, ")", sep=""))
+
+legend("topright", legend = names(species_distribution), fill = colors, title = "Species")
+```
+D.
+```{r}
+setosa <- subset(iris, Species == "setosa")
+versicolor <- subset(iris, Species == "versicolor")
+virginica <- subset(iris, Species == "virginica")
+
+ tail(setosa)
+ tail(versicolor)
+ tail(virginica)
+```
+E.
+```{r}
+iris$Species <- as.factor(iris$Species)
+
+colors <- c("setosa" = "blue", "versicolor" = "pink", "virginica" = "blueviolet")
+symbols <- c("setosa" = 16, "versicolor" = 17, "virginica" = 18)
+
+plot(iris$Sepal.Length, iris$Sepal.Width, 
+     col = colors[iris$Species],           
+     pch = symbols[iris$Species],          
+     xlab = "Sepal Length",                
+     ylab = "Sepal Width",                 
+     main = "Iris Dataset",                
+     sub = "Sepal width and length",       
+     cex = 1.5)                            
+
+legend("topright", legend = levels(iris$Species), 
+       col = c("blue", "pink", "blueviolet"), 
+       pch = c(16, 17, 18), 
+       title = "Species")
+
+```
+
