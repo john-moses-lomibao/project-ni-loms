@@ -1,0 +1,28 @@
+---
+title: "RWorksheet_Lomibao4c"
+author: "lomibao"
+date: "2024-11-04"
+output: pdf_document
+---
+
+```{r setup, include=FALSE}
+knitr::opts_chunk$set(echo = TRUE)
+```
+
+```{r}
+
+```
+1.A
+```{r}
+mpg_ds <- read.csv("/cloud/project/mpg.csv")
+mpg_ds
+str(mpg_ds)
+```
+B.The categorical variables are manufacture, model,types of transmission,drive-type,fuel type, number of cylinders and vehicle class. 
+
+C.The continuous variables are engine displacement, year of manufacturing,city mileage, and highway mileage.
+2.
+```{r}
+
+```
+
