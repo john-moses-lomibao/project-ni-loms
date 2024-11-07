@@ -1,0 +1,102 @@
+---
+title: "RWorksheet_Lomibao4c"
+author: "lomibao"
+date: "2024-11-04"
+output: pdf_document
+---
+
+```{r setup, include=FALSE}
+knitr::opts_chunk$set(echo = TRUE)
+```
+
+```{r}
+
+```
+1.A
+```{r}
+mpg_ds <- read.csv("/cloud/project/mpg.csv")
+mpg_ds
+ # str(mpg_ds)
+```
+For B and C I use str() to gather the data but i comment it out to minimize the space for knitting. 
+
+B.The categorical variables are manufacture, model,types of transmission,drive-type,fuel type, number of cylinders and vehicle class. 
+
+C.The continuous variables are engine displacement, year of manufacturing,city mileage, and highway mileage.
+2.
+Top manufacturer is toyota and top model is caravan 2wd.
+```{r}
+library(dplyr) #install the package dplyr and load the package
+library(ggplot2) #load the ggplot2 package
+
+
+manufacturer_count <- mpg_ds %>%
+  group_by(manufacturer) %>%
+  summarise(model_count = n_distinct(model)) %>%
+  arrange(desc(model_count))
+
+top_manufacturer <- manufacturer_count[1, ]
+
+model_variation <- mpg_ds %>%
+  group_by(model) %>%
+  summarise(variation_count = n()) %>%
+  arrange(desc(variation_count))
+
+top_model <- model_variation[1, ]
+
+top_manufacturer
+top_model
+```
+A.
+```{r}
+  mu <- mpg_ds %>%
+  group_by(manufacturer) %>%
+  summarise(unique_models = n_distinct(model)) %>%
+  arrange(desc(unique_models))
+mu
+```
+B.for plot()
+```{r}
+library(dplyr)
+barplot(mu$unique_models, 
+        names.arg = mu$manufacturer, 
+        col = "green",
+        main = "Unique Models per Manufacturer", 
+        xlab = "Manufacturer", 
+        ylab = "Number of Unique Models",
+        las = 2,          
+        cex.names = 0.7
+        )
+```
+for  ggplot()
+```{r}
+library(ggplot2)
+
+ggplot(mu, aes(x = manufacturer, y = unique_models)) +
+  geom_bar(stat = "identity", fill = "blue") +
+  ggtitle("Unique Models per Manufacturer") +
+  xlab("Manufacturer") +
+  ylab("Number of Unique Models") +
+  theme(axis.text.x = element_text(angle = 90, hjust = 1, size = 10)) 
+```
+2.2 The code show a scatter plot about data and the relationship between the car manufacturer and the model but dataset seems have a lot of data it looks a little bit crowded.
+```{r}
+ggplot(mpg, aes(model, manufacturer)) + geom_point()
+```
+B. No and here's how.
+```{r}
+library(ggplot2)
+library(dplyr)
+
+
+mpg_top20 <- mpg %>% head(20)
+
+ggplot(mpg_top20, aes(x = model, y = year)) +
+  geom_point(color = "red", size = 3) +
+  labs(title = " Model vs Year (Top 20 Observations)", 
+       x = "Model", 
+       y = "Year") 
+
+
+```
+
