@@ -162,3 +162,85 @@ legend("topright", legend = levels(iris$Species),
 
 ```
 F. The scatterplot shows clear separation between setosa and the other two species based on Sepal Length and Sepal Width.
+
+8.
+A.
+```{r}
+library(readxl)
+
+alexa <- read_excel("alexa_file.xlsx")
+
+alexa$variation <- gsub("Black  Show", "BlackShow", alexa$variation)
+
+alexa$variation <- gsub("Black  Dot", "BlackDot", alexa$variation)
+
+alexa$variation <- gsub("Black  Plus", "BlackPlus", alexa$variation)
+
+alexa$variation <- gsub("Black  Spot", "BlackSpot", alexa$variation)
+
+alexa$variation <- gsub("White  Show", "WhiteShow", alexa$variation)
+
+alexa$variation <- gsub("White  Dot", "WhiteDot", alexa$variation)
+
+alexa$variation <- gsub("White  Plus", "WhitePlus", alexa$variation)
+
+alexa$variation <- gsub("White  Spot", "WhiteSpot", alexa$variation)
+
+#knitr::include_graphics("file path")
+
+```
+B.
+```{r}
+library(dplyr)
+
+variations.RData <- alexa %>% 
+  count (alexa$variation)
+
+save(variations.RData, file = "variations.RData")
+
+print(variations.RData)
+```
+C.
+```{r}
+barplot(
+  variations.RData$n,  
+  names.arg = variations.RData$`alexa$variation`,  
+  cex.names = 0.4,  
+  main = "Count of Variations",
+  ylab = "Count",
+  col = rainbow(length(variations.RData$n)),  
+  border = "black",  
+  las = 2  
+)
+```
+D.
+```{r}
+bar <- variations.RData %>%
+  filter(grepl("^Black|^White", `alexa$variation`))
+
+par(mfrow = c(1, 2))
+
+barplot(
+  bar$n[bar$`alexa$variation` %in% c("Black", "BlackPlus", "BlackShow", "BlackSpot", "BlackDot")], 
+  names.arg = bar$`alexa$variation`[bar$`alexa$variation` %in% c("Black", "BlackPlus", "BlackShow", "BlackSpot", "BlackDot")], 
+  las = 3,
+  cex.names = 1,
+  main = "Black Variations",         
+  ylab = "Count",                             
+  col = "black",
+  border = "black"
+)
+
+barplot(
+  bar$n[bar$`alexa$variation` %in% c("White", "WhitePlus", "WhiteShow", "WhiteSpot", "WhiteDot")], 
+  names.arg = bar$`alexa$variation`[bar$`alexa$variation` %in% c("White", "WhitePlus", "WhiteShow", "WhiteSpot", "WhiteDot")], 
+  las = 2,
+  cex.names = 1,
+  main = "White Variations",         
+  ylab = "Count",                              
+  col = "white",                              
+  border = "black"                           
+)
+
+```
+
