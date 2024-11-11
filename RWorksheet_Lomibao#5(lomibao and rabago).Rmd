@@ -1,0 +1,26 @@
+---
+title: "RWorksheet_Lomibao#5(lomibao and rabago)"
+author: "lomibao and rabago"
+date: "2024-11-11"
+output: pdf_document
+---
+
+```{r setup, include=FALSE}
+knitr::opts_chunk$set(echo = TRUE)
+```
+
+```{r}
+
+```
+1.
+```{r}
+library("rvest")
+library("polite")
+
+url <- "https://www.imdb.com/chart/top/"
+  
+  session <- bow(url, 
+                 user_agent = "Student education purpose")
+  session
+```
+
