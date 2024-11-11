@@ -17,10 +17,20 @@ knitr::opts_chunk$set(echo = TRUE)
 library("rvest")
 library("polite")
 
-url <- "https://www.imdb.com/chart/top/"
+url <- "https://www.imdb.com/chart/toptv/"
   
-  session <- bow(url, 
+ session <- bow(url, 
                  user_agent = "Student education purpose")
-  session
+ session
+  
+page <- read_html(url)
+  
+# titles <- page%>%html_nodes(".")%>%html_text()
+#rating <- page%>%html_nodes(".")%>%html_text()
+#voted <- page%>%html_nodes(".")%>%html_text()
+#number_episode <- page%>%html_nodes(".")%>%html_text()
+#year<- page%>%html_nodes(".")%>%html_text()
+
+  
 ```
 
