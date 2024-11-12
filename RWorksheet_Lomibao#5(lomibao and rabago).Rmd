@@ -21,12 +21,19 @@ url <- "https://www.imdb.com/chart/toptv/"
   
  session <- bow(url, 
                  user_agent = "Student education purpose")
- session
-  
+ #session
+
+session_page <- scrape(session)  
 page <- read_html(url)
-  
-# titles <- page%>%html_nodes(".")%>%html_text()
-#rating <- page%>%html_nodes(".")%>%html_text()
+
+
+rank <- 1:50 
+
+
+ titles <- page%>%html_nodes("h3.ipc-title__text")%>%html_text()
+ 
+rating <- page%>%html_nodes("ipc-rating-star--rating")%>%html_text()
+ratings <- as.numeric(rating)
 #voted <- page%>%html_nodes(".")%>%html_text()
 #number_episode <- page%>%html_nodes(".")%>%html_text()
 #year<- page%>%html_nodes(".")%>%html_text()
