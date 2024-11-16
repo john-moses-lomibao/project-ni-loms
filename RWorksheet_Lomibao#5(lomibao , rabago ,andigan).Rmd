@@ -1,0 +1,58 @@
+---
+title: "RWorksheet_Lomibao#5(lomibao and rabago)"
+author: "lomibao and rabago"
+date: "2024-11-11"
+output: pdf_document
+---
+
+```{r setup, include=FALSE}
+knitr::opts_chunk$set(echo = TRUE)
+```
+
+```{r}
+
+```
+1.
+```{r}
+library("rvest")
+library("polite")
+library("httr")
+library("dplyr")
+
+url <- "https://www.imdb.com/chart/toptv/"
+  
+ session <- bow(url, 
+                 user_agent = "Student education purpose")
+ session
+
+# session_page <- scrape(session)  
+# page <- read_html(url)
+
+rank_title <-character(0)
+links <- character(0)
+
+ titles <- scrape(session)%>%html_nodes("h3.ipc-title__text")%>%html_text()
+ titles
+
+ title_list <-as.data.frame(titles[2:26])
+ 
+ split_df<-strsplit(as.character(title_list$rank), ".",fixed = TRUE)
+ 
+split_df <- data.frame(do.call(rbind,split_df))
+
+split_df <-split_df[- c(3,4)]
+
+#colnames(split_df) <-c("ranks","title")
+
+str(split_df)
+  
+```
+
+```{r}
+split_df<-strsplit(as.character(title_list$rank), ".",fixed = TRUE)
+split_df <- data.frame(do.call(rbind,split_df))
+split_df <-split_df[- c(3,4)]
+#colnames(split_df) <-c("ranks","title")
+str(split_df)
+```
+
