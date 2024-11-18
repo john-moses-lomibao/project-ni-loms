@@ -25,34 +25,47 @@ url <- "https://www.imdb.com/chart/toptv/"
                  user_agent = "Student education purpose")
  session
 
-# session_page <- scrape(session)  
-# page <- read_html(url)
+ session_page <- scrape(session)  
+ page <- read_html(url)
 
 rank_title <-character(0)
 links <- character(0)
 
- titles <- scrape(session)%>%html_nodes("h3.ipc-title__text")%>%html_text()
- titles
+#title <- vector("character", length = 50 )
 
- title_list <-as.data.frame(titles[2:26])
+#   for(i in 1:52){
+#  title[i] <- session_page%>%html_nodes(paste0("h3.ipc-title__te # xt(',i')"))%>%html_text()
+ #  }
+
+ # print(title)
  
- split_df<-strsplit(as.character(title_list$rank), ".",fixed = TRUE)
- 
-split_df <- data.frame(do.call(rbind,split_df))
+ title <- session_page%>%html_nodes('h3.ipc-title__text')%>%html_text()
+ title
 
-split_df <-split_df[- c(3,4)]
-
-#colnames(split_df) <-c("ranks","title")
-
-str(split_df)
-  
 ```
-
+Creating as a Dataframe.
 ```{r}
-split_df<-strsplit(as.character(title_list$rank), ".",fixed = TRUE)
-split_df <- data.frame(do.call(rbind,split_df))
-split_df <-split_df[- c(3,4)]
-#colnames(split_df) <-c("ranks","title")
-str(split_df)
+title_list <- as.data.frame(title[1:50])
+colnames(title_list)<-"ranks"
+
+```
+Spliting the Data Frame 
+```{r}
+split_df <- strsplit(as.character(title_list$ranks),".",fixed = TRUE)
+split_df<- data.frame(do.call(rbind,split_df))
+split_df
+```
+renaming the columns
+```{r}
+split_df<-split_df[-c(3,4)]
+colnames(split_df)<- c("Ranks","Titles")
+split_df
+```
+creating a Csv.file
+```{r}
+rank_title<-data.frame(
+  rank_title = split_df
+)
+#write.csv(rank_title = "title.csv")
 ```
 
